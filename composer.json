@@ -1,5 +1,5 @@
 {
-    "name": "niisan/laravel-oauth-google-calendar",
+    "name": "bazikyan/laravel-oauth-google-calendar",
     "description": "Using Google Calendar Api by using OAuth in Laravel.",
     "type": "library",
     "license": "MIT",
