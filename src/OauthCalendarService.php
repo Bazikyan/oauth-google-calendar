@@ -129,7 +129,7 @@ class OauthCalendarService
      * @param array $data
      * @return Google_Service_Calendar_Event
      */
-    public function createEvent($user, array $data): Google_Service_Calendar_Event
+    public function createEvent($user, array $data, $config = []): Google_Service_Calendar_Event
     {
         $event = new Google_Service_Calendar_Event([
             'summary' => $data['summary'],
@@ -139,10 +139,11 @@ class OauthCalendarService
             ],
             'end' => [
                 'dateTime' => Carbon::parse($data['end'])->format(DATE_RFC3339)
-            ]
+            ],
+            'conferenceData' => $data['conferenceData'] ?? [],
         ]);
         $this->setAccessToken($user);
-        $new_event = $this->calendar_service->events->insert('primary', $event);
+        $new_event = $this->calendar_service->events->insert('primary', $event, $config);
         return $new_event;
     }
 
